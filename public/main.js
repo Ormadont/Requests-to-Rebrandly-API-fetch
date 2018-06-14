@@ -1,5 +1,5 @@
 // Information to reach API
-const apiKey = '5e43551c8a54428e8911701048c7a936';
+const apiKey = 'd1c2020293fc4700b13930d607c029ae';
 const url = 'https://api.rebrandly.com/v1/links';
 
 // Some page elements
@@ -23,14 +23,14 @@ const shortenUrl = () => {
       //renderJsonResponse(response);
       return response.json();
     }
-    else {
-      console.log(response.json());
-      throw new Error('Request failed!');
-    }
-
+    throw new Error('Request failed!');
   }, networkError => {
     console.log(networkError.message)
-  });
+  }).then( jsonResponse => {
+    renderResponse(jsonResponse);
+    //renderRawResponse(jsonResponse);
+  }
+  );
 }
 
 // Clear page and call AJAX functions
